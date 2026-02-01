@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BABA YAGA | Gonzales Family Enterprises (GFE)</title>
+  <meta name="description" content="BABA YAGA — Gonzales Family Enterprises (GFE). Work, skills, cars, and contact." />
+
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --brand: #8b5cf6;
+      --brand2: #22d3ee;
+      --shadow: 0 12px 36px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(139,92,246,.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 25%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(800px 600px at 60% 95%, rgba(139,92,246,.14), transparent 60%),
+        linear-gradient(180deg, #070a0f, #0b0f14 30%, #070a0f);
+      overflow-x: hidden;
+    }
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      white-space: nowrap;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .logo{
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, rgba(139,92,246,.9), rgba(34,211,238,.7));
+      box-shadow: 0 10px 25px rgba(139,92,246,.22);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .nav-links{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .pill:hover{
+      background: rgba(255,255,255,.09);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 80px; }
+    .grid{ display:grid; gap: 16px; }
+    @media (min-width: 860px){
+      .grid-2{ grid-template-columns: 1.35fr .65fr; }
+    }
+
+    .card{
+      border: 1px solid rgba(255,255,255,.10);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-pad{ padding: 18px; }
+
+    .hero{ position: relative; padding: 22px 18px 18px; }
+    .hero h1{
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: .6px;
+    }
+    .hero .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 100%;
+    }
+    .dot{
+      width: 9px; height: 9px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 4px rgba(139,92,246,.15);
+      flex: 0 0 auto;
+    }
+    .hero p{
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 74ch;
+    }
+    .hero-cta{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); text-decoration: none; }
+    .btn.primary{
+      border: 1px solid rgba(139,92,246,.55);
+      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(34,211,238,.55));
+      box-shadow: 0 16px 34px rgba(139,92,246,.18);
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+    .kbd{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.2);
+      color: rgba(255,255,255,.78);
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    h2{ margin: 0; font-size: 18px; letter-spacing: .3px; }
+    .sub{ margin: 0; color: var(--muted); font-size: 13px; }
+
+    .list{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .item{
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+    }
+    .item .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .item b{ display:block; font-size: 15px; }
+    .badge{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.78);
+      white-space: nowrap;
+    }
+    .item p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+    }
+
+    .car-grid{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (min-width: 860px){
+      .car-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    .car{
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      position: relative;
+      overflow:hidden;
+    }
+    .car:before{
+      content:"";
+      position:absolute; inset:-40px -60px auto auto;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.22), transparent 60%),
+                  radial-gradient(circle at 70% 70%, rgba(139,92,246,.28), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .car h3{ margin: 0; font-size: 15px; letter-spacing:.2px; }
+    .car small{ display:block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+    .car p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    form{ display:flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    label{ font-size: 13px; color: var(--muted); }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.2);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+    input:focus, textarea:focus{
+      border-color: rgba(34,211,238,.45);
+      box-shadow: 0 0 0 4px rgba(34,211,238,.10);
+    }
+
+    .hint{
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+      line-height: 1.45;
+    }
+    .split{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255,255,255,.12);
+    }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    footer{
+      margin-top: 22px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; line-height: 1.1;">BABA YAGA</div>
+          <div style="font-size:12px; color: rgba(255,255,255,.62); line-height: 1.1;">(GFE) Gonzales Family Enterprises</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Sections">
+        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#cars">Cars</a>
+        <a class="pill" href="#contact">Contact</a>
+        <a class="pill" href="#social">Social</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="card hero" id="top">
+      <div class="grid grid-2">
+        <div class="card-pad">
+          <h1>BABA YAGA</h1>
+          <div class="tag">
+            <span class="dot" aria-hidden="true"></span>
+            <span><b>(GFE)</b> Gonzales Family Enterprises — one call, we handle it.</span>
+          </div>
+
+          <p>
+            I’m Boogie — known as <b>BABA YAGA</b>. I run <b>Gonzales Family Enterprises (GFE)</b>.
+            We’re built for people who don’t want a runaround: tell us what you need, and we’ll get the right team on it.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact" aria-label="Jump to contact">
+              Contact Me <span class="kbd">↓</span>
+            </a>
+            <button class="btn" type="button" id="copyLinkBtn" aria-label="Copy website link">
+              Copy Page Link <span class="kbd">⌘/Ctrl</span>
+            </button>
+          </div>
+
+          <div class="split">
+            <div class="mono" style="color: rgba(255,255,255,.70); font-size: 12px;">
+              Location: <span id="locationText">United States</span>
+            </div>
+            <div class="mono" style="color: rgba(255,255,255,.70); font-size: 12px;">
+              Email: <span id="emailText">Boogie.gonzales@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card-pad">
+          <div class="section-title">
+            <h2>How GFE Works</h2>
+            <p class="sub">simple + direct</p>
+          </div>
+
+          <div class="list">
+            <div class="item">
+              <div class="top">
+                <b>1) You call / message</b>
+                <span class="badge">fast response</span>
+              </div>
+              <p>Tell us what you need, where, and the timeline. We’ll ask a few quick questions and lock in a plan.</p>
+            </div>
+
+            <div class="item">
+              <div class="top">
+                <b>2) We match the right crew</b>
+                <span class="badge">network</span>
+              </div>
+              <p>Repairs, property work, vehicle help, logistics, or security services — we coordinate the right people.</p>
+            </div>
+
+            <div class="item">
+              <div class="top">
+                <b>3) Job gets handled</b>
+                <span class="badge">done right</span>
+              </div>
+              <p>Clear communication, clean finish, and professional follow-through.</p>
+            </div>
+          </div>
+
+          <p class="hint">
+            Note: Some services require licensing/permits and are offered only where compliant and available.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="card" id="work" style="margin-top: 16px;">
+      <div class="card-pad">
+        <div class="section-title">
+          <h2>Work</h2>
+          <p class="sub">What we can help with</p>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="top">
+              <b>Property & Repair</b>
+              <span class="badge">hands-on</span>
+            </div>
+            <p>
+              Small repairs, fixes, troubleshooting, and general maintenance.
+              If it’s broken or needs attention, we’ll get a repair person on it.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Yard & Outdoor Work</b>
+              <span class="badge">clean + quick</span>
+            </div>
+            <p>
+              Mowing, cleanup, and basic outdoor upkeep.
+              You need the grass cut? We’ll come handle it.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Vehicles & Sales Support</b>
+              <span class="badge">cars</span>
+            </div>
+            <p>
+              Help finding a vehicle, coordinating options, and connecting you with the right salesperson.
+              Tell us the budget and what you want — we’ll work it.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Security Services</b>
+              <span class="badge">licensed where required</span>
+            </div>
+            <p>
+              Event/property security and protection services offered through properly licensed/insured providers
+              (availability depends on location and legal requirements).
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Special Requests</b>
+              <span class="badge">tell us</span>
+            </div>
+            <p>
+              If it’s legal and doable, we’ll find a way.
+              One call, one point of contact — and we coordinate the rest.
+            </p>
+          </div>
+        </div>
+
+        <p class="hint">
+          Want this section to be more “menu style”? I can convert it into a clean pricing/services grid.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMPANY NETWORK (FUTURE BRANDS) -->
+    <section class="card" id="network" style="margin-top: 16px;">
+      <div class="card-pad">
+        <div class="section-title">
+          <h2>Company Network</h2>
+          <p class="sub">what we’re building</p>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="top">
+              <b>GFE Services</b>
+              <span class="badge">now</span>
+            </div>
+            <p>General services + coordination — the umbrella brand people call when they need something handled.</p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Comic Book Company</b>
+              <span class="badge">coming soon</span>
+            </div>
+            <p>A creative label for comics, artwork, drops, and storytelling projects.</p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Racing Team</b>
+              <span class="badge">coming soon</span>
+            </div>
+            <p>Motorsports + street culture content — builds, events, and media.</p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Construction / Renovation</b>
+              <span class="badge">coming soon</span>
+            </div>
+            <p>Home improvement, rebuilds, and bigger projects as the team grows.</p>
+          </div>
+
+          <div class="item">
+            <div class="top">
+              <b>Specialty Supply (where legal)</b>
+              <span class="badge">by compliance</span>
+            </div>
+            <p>
+              We only support lawful, regulated channels and requirements.
+              Details depend on location and licensing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="card" id="skills" style="margin-top: 16px;">
+      <div class="card-pad">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p class="sub">what you get with us</p>
+        </div>
+
+        <div class="chips" aria-label="Skill list">
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Coordination & Scheduling</span>
+          <span class="chip">Customer Communication</span>
+          <span class="chip">Reliable Follow-Through</span>
+          <span class="chip">Vendor / Crew Management</span>
+          <span class="chip">Attention to Detail</span>
+          <span class="chip">Safety Mindset</span>
+          <span class="chip">Fast Turnaround</span>
+        </div>
+
+        <p class="hint">
+          If you tell me your main service area (city/Ohio/etc.), I’ll add a “Service Area” chip and tighten the copy.
+        </p>
+      </div>
+    </section>
+
+    <!-- CARS -->
+    <section class="card" id="cars" style="margin-top: 16px;">
+      <div class="card-pad">
+        <div class="section-title">
+          <h2>Cars</h2>
+          <p class="sub">built from hustle + culture</p>
+        </div>
+
+        <div class="car-grid">
+          <div class="car">
+            <h3>Daily / Main Ride</h3>
+            <small>Drop your car here (year, make, model)</small>
+            <p>
+              Add what you love about it — power, sound, comfort, tech, or the story behind it.
+            </p>
+          </div>
+
+          <div class="car">
+            <h3>Project / Next Build</h3>
+            <small>What you’re building toward</small>
+            <p>
+              A clean place to show what’s next: mods, restoration, plans, and goals.
+            </p>
+          </div>
+
+          <div class="car">
+            <h3>Racing Team Vision</h3>
+            <small>coming soon</small>
+            <p>
+              Events, content, crew, and a real team identity under the GFE umbrella.
+            </p>
+          </div>
+
+          <div class="car">
+            <h3>Media / Highlights</h3>
+            <small>links + clips</small>
+            <p>
+              Add photos, reels, TikToks, and edits once you’re ready to post them publicly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + SOCIAL -->
+    <section class="grid grid-2" style="margin-top: 16px;">
+      <!-- Contact -->
+      <section class="card" id="contact">
+        <div class="card-pad">
+          <div class="section-title">
+            <h2>Contact</h2>
+            <p class="sub">fastest way to reach me</p>
+          </div>
+
+          <form id="contactForm">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div>
+              <label for="need">What do you need?</label>
+              <input id="need" name="need" placeholder="Example: mowing, repair, security, car help..." />
+            </div>
+            <div>
+              <label for="details">Details</label>
+              <textarea id="details" name="details" placeholder="Where, when, and what you want done..."></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Send Email</button>
+            <p class="hint">
+              This opens your email app (no backend). If you want a real website form that collects messages,
+              you’d need hosting + a form service (I can set that up if you want).
+            </p>
+          </form>
+
+          <p class="hint">
+            <span class="mono">Boogie.gonzales@gmail.com</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Social -->
+      <section class="card" id="social">
+        <div class="card-pad">
+          <div class="section-title">
+            <h2>Social Links</h2>
+            <p class="sub">follow the brand</p>
+          </div>
+
+          <div class="list">
+            <div class="item">
+              <div class="top">
+                <b>TikTok</b>
+                <span class="badge">@Thebabayaga419</span>
+              </div>
+              <p><a href="#" id="ttLink" rel="noopener">https://www.tiktok.com/@thebabayaga419</a></p>
+            </div>
+
+            <div class="item">
+              <div class="top">
+                <b>Instagram</b>
+                <span class="badge">optional</span>
+              </div>
+              <p><a href="#" id="igLink" rel="noopener">Add your Instagram URL</a></p>
+            </div>
+
+            <div class="item">
+              <div class="top">
+                <b>Facebook</b>
+                <span class="badge">optional</span>
+              </div>
+              <p><a href="#" id="fbLink" rel="noopener">Add your Facebook URL</a></p>
+            </div>
+
+            <div class="item">
+              <div class="top">
+                <b>Other</b>
+                <span class="badge">optional</span>
+              </div>
+              <p><a href="#" id="otherLink" rel="noopener">Website / YouTube / LinkedIn, etc.</a></p>
+            </div>
+          </div>
+
+          <div class="split">
+            <button class="btn" type="button" id="copyEmailBtn">Copy Email</button>
+            <a class="btn" href="#top">Back to top</a>
+          </div>
+
+          <p class="hint" style="margin-top: 12px;">
+            Public note: services shown here are offered only where legal and compliant, including any regulated services.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      © <span id="year"></span> BABA YAGA • (GFE) Gonzales Family Enterprises — single-file site.
+    </footer>
+  </main>
+
+  <script>
+    // ====== PROFILE ======
+    const PROFILE = {
+      displayName: "BABA YAGA",
+      brandLine: "(GFE) Gonzales Family Enterprises",
+      location: "United States",
+      email: "Boogie.gonzales@gmail.com",
+      socials: {
+        tiktok: "https://www.tiktok.com/@thebabayaga419",
+        instagram: "#", // add when ready
+        facebook: "#",  // add when ready
+        other: "#"      // add when ready
+      }
+    };
+
+    // Apply
+    document.getElementById("locationText").textContent = PROFILE.location;
+    document.getElementById("emailText").textContent = PROFILE.email;
+
+    const tt = document.getElementById("ttLink");
+    const ig = document.getElementById("igLink");
+    const fb = document.getElementById("fbLink");
+    const other = document.getElementById("otherLink");
+
+    tt.href = PROFILE.socials.tiktok;
+    tt.textContent = PROFILE.socials.tiktok;
+
+    ig.href = PROFILE.socials.instagram;
+    ig.textContent = PROFILE.socials.instagram === "#" ? "Add your Instagram URL" : PROFILE.socials.instagram;
+
+    fb.href = PROFILE.socials.facebook;
+    fb.textContent = PROFILE.socials.facebook === "#" ? "Add your Facebook URL" : PROFILE.socials.facebook;
+
+    other.href = PROFILE.socials.other;
+    other.textContent = PROFILE.socials.other === "#" ? "Website / YouTube / LinkedIn, etc." : PROFILE.socials.other;
+
+    // Contact form (mailto)
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const need = document.getElementById("need").value.trim();
+      const details = document.getElementById("details").value.trim();
+
+      const subject = encodeURIComponent(`GFE Request: ${need || "New job request"}`);
+      const body = encodeURIComponent(
+        `Name: ${name || "(not provided)"}\n` +
+        `Need: ${need || "(not provided)"}\n\n` +
+        `Details:\n${details || "(not provided)"}\n\n` +
+        `— sent from the GFE webpage`
+      );
+
+      window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
+    });
+
+    // Copy helpers
+    document.getElementById("copyLinkBtn").addEventListener("click", async () => {
+      const url = window.location.href;
+      try { await navigator.clipboard.writeText(url); alert("Link copied."); }
+      catch { prompt("Copy this link:", url); }
+    });
+
+    document.getElementById("copyEmailBtn").addEventListener("click", async () => {
+      const email = PROFILE.email;
+      try { await navigator.clipboard.writeText(email); alert("Email copied."); }
+      catch { prompt("Copy this email:", email); }
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
